@@ -81,6 +81,8 @@ You may notice that the data files (in `/static/indicators/data`) have the follo
 - DisplayValue: the value, as a string intended for display. This field is used if, for example, a value might be suppressed and not intended for display.
 - Note: A note accompanying this datapoint, if applicable.
 
+You may notice that this data structure does not allow for, within a single measure, further by-group faceting of the data - eg, splitting the measure by age, by sex, or by other group status. To do that, you may consider having separate measures or indicators by different groups, rather than faceting one indicator or measure by group. 
+
 ## Aspects of the different views
 **Table**: Each indicator by default displays a table, which shows all measures for the indicator, all geographies, and the most recent time period. 
 
@@ -163,10 +165,10 @@ VisOptions include:
 - Trend: GeoType and TimePeriodIDs to show on the Trend Chart.
 - Links: Disparities, and Measures to link in the Correlates view.
 
-## Worth noting
-This repository likely has a bunch of extra code. We have taken our product and simplified it a lot, but there is further simplication that can happen. 
-
+## Notes
 The data in this repository are copies of the data in [EHDP-data](www.github.com/nychealth/EHDP-data), *at the time of this repository's creation*. Therefor, it may be out of date by the time of publication; data in this repository, then, are not canonical; they're for demonstration purposes only.
 
-## Questions, issues, etc
-We can answer questions about this repository - feel free to open issues.
+This repository likely includes some unnecessary. We have taken our product and simplified it a lot, but there is further simplication that may happen as you implement it. 
+
+**We do not plan to maintain this in perpetuity**, but are publishing this version for re-use. We can answer questions about functionality and implementation, so feel free to open issues. However, since we do not plan on ongoing maintenance of this version, we don't intend to review or accept pull requests. 
+
