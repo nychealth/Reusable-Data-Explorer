@@ -5,7 +5,9 @@ We have stripped down the [Environment and Health Data Portal](https://a816-dohb
 
 We built this Data Explorer to be simple, powerful, intuitive, responsive, accessible, and useful. We also want it to be an asset for other projects, so are making this code available outside the context of the rest of the site in hopes that it helps other projects use this (or aspects of it).
 
-The technologies this leverages are:
+You can, for example, fork this repository, put it in your own Github repository, add your own data, serve the site via Github Pages, and iframe this application into your own website. 
+
+The technologies this uses are:
 - [The NYC Core Framework](https://www.nyc.gov/assets/oti/html/nyc-core-framework/index.html), a Bootstrap-based front-end framework
 - [D3](https://d3js.org/), for ingesting data
 - [Arquero](https://github.com/uwdata/arquero), for ingesting and manipulating data on the client side
@@ -19,13 +21,11 @@ This Readme file provides information on how to make this your own. However, you
 You will need to install:
 - Hugo
 - npm
-- This repository's dependencies
+- This repository's dependencies via `npm install`
 
-Once you have those installed and this repository opened in an IDE, then, you canopen the terminal and preview the site by entering the command `hugo serve`. Hugo will print to the terminal a local URL where you can preview this - likely something like `http://localhost:1313/`.
+Once you have those installed and this repository opened in an IDE, then, you can open the terminal and preview the site by entering the command `hugo serve`. Hugo will print to the terminal a local URL where you can preview this - likely something like `http://localhost:1313/`.
 
 To build the site, the command `hugo` will assemble the site to the `/docs` folder.
-
-You could also, for example, fork this repository, put it in your own Github repository, serve it via Github Pages, and iframe that 'site' into your own website. 
 
 ## How to make it your own
 You can make this your own by replacing the data and metadata with your own files. These will need to be structured the same way that we structure data for the Environment and Health Data Portal. This Readme file contains information on how to structure data and metadata files so that they can be displayed in here. 
@@ -50,20 +50,20 @@ You can further make this your own by modifying the following files to affect wh
 - `index.html` - the template of this Data Explorer
 - JavaScript files in `/assets/js/data-explorer/` - the JS that powers the Data Explorer
 
-Please do due dilligence before launching your own project using this code. Test your data, and features. For example, the Citation Function (as written in here) still mentions the NYC Department of Health and Mental Hygiene; this is one of the other things you'll likely want to modify in order to properly adapt this repository for your own uses.
+Please do due dilligence before launching your own project using this code. Test your data, and features. For example, the Citation Function (as written in here) still mentions the NYC Department of Health and Mental Hygiene; you will likely need to finalize this source code in other ways (like setting the baseURL in the config file) to properly adapt this for your own use. 
 
 ## How this works
-This Data Explorer will display neighborhood-level data with the following views:
+This Data Explorer will display aggregated, neighborhood-level data with the following views:
 - Table
 - Map
 - Trend
 - Correlates (including disparities)
 
-The markdown file in `/content/_index.md` has frontmatter in `indicators` which reference the IndicatorIDs in `metadata.json`. Hugo builds pages by combining the content in a markdown file with a template file; when Hugo builds this site, it will take the IDs in `_index.md`'s frontmatter, look for those IDs in `metadata.json`, and then print the `IndicatorName` field to the page, in the list of datasets.
+The markdown file in `/content/_index.md` has frontmatter in `indicators` which reference the IndicatorIDs in `metadata.json`. Hugo builds pages by combining the content in a markdown file with a template file; when Hugo builds this site, it will take the IDs in `_index.md`'s frontmatter, look for those IDs in `metadata.json`, and then print each ID's `IndicatorName` field to the page, in the list of datasets.
 
 The page will load data for the selected indicator by getting the numeric data file, `[IndicatorID].json`, that corresponds to the chosen indicator's `IndicatorID`. The page will also look at that indicator's metadata (in `metadata.json`) for various aspects of the indicator: what measures it has, what time periods, what geographies. It will use this metadata to:
 - Filter `[IndicatorID].json` prepare a data object that it delivers to the table or visualizations for rendering on the page
-- Create the drop-down menus for different interaction options
+- Create the sidebar menus for different interaction options
 
 The following terms are used in our data:
 - An **indicator** is the organizing unit of these datasets. 
@@ -71,7 +71,7 @@ The following terms are used in our data:
 - A **geography** is the geographic scale of the data. Most indicators have data at the Citywide and Boroughs geographies, as well as data at several different neighborhood geographies, including Community District, Neighborhood Tabulation Area, and UHF42 neighborhoods. 
 - Any given **value** is a value for a measure of an indicator, at a geography, for a time period.
 
-You may notice that the data files (in `/static/indicators/data`) have the following fields:
+Data files (in `/static/indicators/data`) have the following fields:
 - MeasureID: a unique numeric ID for the measure
 - GeoID: a ID for the geographic unit
 - GeoType: the geography to which the GeoID applies; eg, a datapoint might have the GeoID of "1", which means "The Bronx" if the GeoType is "Borough," or "NYC" if the GeoType is "Citywide" (GeoLookup.csv is a reference file for geographies, GeoTypes, GeoIDs, and names).
@@ -83,8 +83,8 @@ You may notice that the data files (in `/static/indicators/data`) have the follo
 
 You may notice that this data structure does not allow for, within a single measure, further by-group faceting of the data - eg, splitting the measure by age, by sex, or by other group status. To do that, you may consider having separate measures or indicators by different groups, rather than faceting one indicator or measure by group. 
 
-## Aspects of the different views
-**Table**: Each indicator by default displays a table, which shows all measures for the indicator, all geographies, and the most recent time period. 
+## Aspects of the different dataset views
+**Table**: Each indicator by default displays a table, which shows all measures for the indicator, all geographies, and the most recent time period. This is a summary of the dataset.
 
 **Maps and charts - a general overview**: When a user clicks a view tab (eg, Map, Trend, Correlate), the JavaScript passes the data and metadata into `renderMap()` or `renderTrend()` or other similar functions. These functions take the data and metadata and deliver it to a Vega-Lite visualization specification, and print it to other key parts of the page (eg, the data source, notes, or 'how calculated' fields on the page).
 
