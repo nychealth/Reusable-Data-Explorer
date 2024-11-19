@@ -5,6 +5,8 @@ We have stripped down the [Environment and Health Data Portal](https://a816-dohb
 
 We built this Data Explorer to be simple, powerful, intuitive, responsive, accessible, and useful. We also want it to be an asset for other projects, so are making this code available outside the context of the rest of the site in hopes that it helps other projects use this (or aspects of it).
 
+![image](https://github.com/user-attachments/assets/192c1c8d-0942-4be7-842c-41e7680337e6)
+
 You can, for example, fork this repository, put it in your own Github repository, add your own data, serve the site via Github Pages, and iframe this application into your own website. 
 
 The technologies this uses are:
