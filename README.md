@@ -183,6 +183,8 @@ This section of the readme focuses on elements of the page, and where in the cod
 
 ![image](https://github.com/user-attachments/assets/192c1c8d-0942-4be7-842c-41e7680337e6)
 
+## Deployment
+One way you can consider deploying this is to use [Github Actions](https://github.com/peaceiris/actions-hugo) to build your source code to another branch in your repository - [see here for examples](https://github.com/nychealth/EH-dataportal/tree/production/.github/workflows). And, you can use [Github Pages](https://pages.github.com/) to serve this branch of built code, resulting in a webpage at `your-username.githubpages.io/your-repository-name`. You can then embed this as an iframe into another website. 
 
 ## Notes
 The data in this repository are copies of the data in [EHDP-data](www.github.com/nychealth/EHDP-data), *at the time of this repository's creation*. Therefor, it may be out of date by the time of publication; data in this repository, then, are not canonical; they're for demonstration purposes only.
