@@ -189,7 +189,7 @@ One way you can consider deploying this is to use [Github Actions](https://githu
 ## Notes
 The data in this repository are copies of the data in [EHDP-data](www.github.com/nychealth/EHDP-data), *at the time of this repository's creation*. Therefor, it may be out of date by the time of publication; data in this repository, then, are not canonical; they're for demonstration purposes only.
 
-This repository likely includes some unnecessary. We have taken our product and simplified it a lot, but there is further simplication that may happen as you implement it. 
+This repository likely includes some unnecessary code. We have taken our product and simplified it a lot, stripping out unused code, but there is further simplication that may happen as you implement it. 
 
-**We do not plan to maintain this in perpetuity**, but are publishing this version for re-use. We can answer questions about functionality and implementation, so feel free to open issues. However, since we do not plan on ongoing maintenance of this version, we don't intend to review or accept pull requests. 
+**We do not plan to maintain this in perpetuity**, and may not update this to keep it aligned with changes that happen to the Environment and Health Data Portal, but are publishing this version for re-use. We can answer questions about functionality and implementation, so feel free to open issues. However, since we do not plan on ongoing maintenance of this version, we don't plan to review or accept pull requests to modify or enhance this. 
 
