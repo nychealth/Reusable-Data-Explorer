@@ -10,6 +10,7 @@ We built this Data Explorer to be simple, powerful, intuitive, responsive, acces
 You can, for example, fork this repository, put it in your own Github repository, add your own data, serve the site via Github Pages, and iframe this application into your own website. 
 
 The technologies this uses are:
+- [Hugo](https://www.gohugo.io), the static site builder
 - [The NYC Core Framework](https://www.nyc.gov/assets/oti/html/nyc-core-framework/index.html), a Bootstrap-based front-end framework
 - [D3](https://d3js.org/), for ingesting data
 - [Arquero](https://github.com/uwdata/arquero), for ingesting and manipulating data on the client side
@@ -25,17 +26,18 @@ You will need to install:
 - npm
 - This repository's dependencies via `npm install`
 
-Once you have those installed and this repository opened in an IDE, then, you can open the terminal and preview the site by entering the command `hugo serve`. Hugo will print to the terminal a local URL where you can preview this - likely something like `http://localhost:1313/`.
+### A brief note about static sites
+Once you have those installed and this repository opened in an IDE, you are viewing the site's *source* code. A static site builder (Hugo) uses this repository of source code as an input, and builds the site's files for you.
 
-To build the site, the command `hugo` will assemble the site to the `/docs` folder.
+Open the terminal and preview the site by entering the command `hugo serve`. Hugo will print to the terminal a local URL where you can preview this - likely something like `http://localhost:1313/`. To build the site, the command `hugo` will assemble the site to the project's `/docs` folder.
 
 ## How to make it your own
-You can make this your own by replacing the data and metadata with your own files. These will need to be structured the same way that we structure data for the Environment and Health Data Portal. This Readme file contains information on how to structure data and metadata files so that they can be displayed in here. 
+Make this your own by replacing the data and metadata with your own files. These will need to be structured the same way that we structure data for the Environment and Health Data Portal. This Readme file contains information on how to structure data and metadata files so that they can be displayed in here. 
 
-Big picture, you will need to:
-- Have a database of files
-- Export those data to json files structured as indicated here
-- Replace our files (detailed below) with your own
+Big picture, you will need:
+- A database of files
+- To export those data to json files structured as indicated here
+- To replace our files (detailed below) with your own
 
 You will need:
 
@@ -130,7 +132,7 @@ A few aspects of the maps:
 
 **Trend chart**: Our example data in this repository default to displaying trend data for Citywide and Borough geographies, as neighborhood-level health data is often too variable to be reliable. 
 
-If an Indicator has the `Comparisons` metadata item (eg the below), then the Data Explorer will look up the corresponding numeric ID in `comparisons.json` and use the information in there (the indicator and measure IDs, geographic resolutions, etc) to create a trend chart that shows several indicators.
+If an Indicator has the `Comparisons` metadata item (eg the below), then the Data Explorer will look up the corresponding numeric ID in `comparisons.json` and use the information in there (the indicator and measure IDs, geographic resolutions, etc) to create a trend chart that shows several similar indicators (as opposed to the default of displaying individual boroughs for the selected indicator).
 
 ```
     "Comparisons": [537],
